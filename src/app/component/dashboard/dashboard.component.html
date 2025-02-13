@@ -1,6 +1,65 @@
 <h1>Dashboard</h1>
-<div class="dashboard">
-  <div class="box red">Box 1</div>
-  <div class="box green">Box 2</div>
-  <div class="box blue">Box 3</div>
+
+<div class="container m-5 p-2 rounded mx-auto bg-light shadow">
+  <!-- App title section -->
+  <div class="row m-1 p-4">
+    <div class="col">
+      <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
+        <i class="fa fa-check-circle bg-primary text-white rounded p-2"></i>
+      </div>
+    </div>
+  </div>
+  <!-- Create todo section -->
+  <div class="row m-1 p-3">
+    <div class="col col-8 mx-auto">
+      <div class="row bg-white rounded shadow-sm p-2 add-todo-wrapper align-items-center justify-content-center">
+        <div class="col">
+          <input class="form-control form-control-lg border-0 add-todo-input bg-transparent rounded"
+            [(ngModel)]="todo.name" type="text" placeholder="Add new ..">
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-outline-success" (click)="addTodo()">{{actionLabel}}</button>
+          <button type="button" class="btn btn-outline-danger" (click)="clear()">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="todos && todos.length > 0" class="p-2 mx-4 border-black-25 border-bottom"></div>
+
+  <!-- Todo list section -->
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+      <!-- Todo Item 1 -->
+      <div *ngFor="let todo of todos" class="row px-3 align-items-center todo-item rounded">
+        <div class="col-auto m-1 p-0 d-flex align-items-center">
+          <h2 class="m-0 p-0">
+            <i (click)="checkTodo(todo)" class="text-primary btn fa "
+              [ngClass]="{'fa-check-square': todo.done,'fa-square-o': !todo.done}"></i>
+          </h2>
+        </div>
+        <div class="col px-1 m-1 d-flex align-items-center">
+          <h1 [ngClass]="{'text-lt': todo.done}">{{todo.name}}</h1>
+
+        </div>
+        <div class="col-auto m-1 p-0 px-3 d-none">
+        </div>
+        <div class="col-auto m-1 p-0 todo-actions">
+          <div class="row d-flex align-items-center justify-content-end">
+            <h5 class="m-0 p-0 px-2">
+              <i class="fa fa-pencil text-info btn m-0 p-0" (click)="editTodo(todo)" data-toggle="tooltip"
+                data-placement="bottom" title="Edit todo"></i>
+            </h5>
+            <h5 class="m-0 p-0 px-2">
+              <i class="fa fa-trash-o text-danger btn m-0 p-0" data-toggle="tooltip" data-placement="bottom"
+                (click)="delete(todo)" title="Delete todo"></i>
+            </h5>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
