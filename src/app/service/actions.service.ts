@@ -19,6 +19,7 @@ export class ActionsService {
   async addTodo(todo: Todo) {
     // Obtener el usuario autenticado
     const { data: userData, error: userError } = await this.supabase_client.auth.getUser();
+    console.log('userdata: ', userData);
     
     if (userError || !userData?.user) {
       console.error('Error obteniendo usuario:', userError);
