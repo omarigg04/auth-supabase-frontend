@@ -26,7 +26,7 @@ export class ActionsService {
       return { data: null, error: userError };
     }
 
-    const { id, ...todoData } = todo;
+    const { id, email, ...todoData } = todo;
     todoData.user_id = userData.user.id; // Asignar el user_id
 
     const { data, error } = await this.supabase_client
