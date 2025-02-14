@@ -1,4 +1,4 @@
-  import { Component } from '@angular/core';
+import { Component } from '@angular/core';
   import { CommonModule } from '@angular/common';
   import { Todo } from '../../todo.model';
   import { ActionsService } from 'src/app/service/actions.service';
@@ -16,17 +16,17 @@
     todos: Todo[] = [];
     todo: Todo = new Todo();
     actionLabel: string = 'ADD';
+    user_id: string = '';
 
     constructor(private api: ActionsService) { }
 
     ngOnInit(): void {
-      let listen = this.api.listenAll();
-      this.api.getTodos().then((data) => {
-        console.log('data', data);
-        
-        this.todos = (data.todos ?? []).map((item: any) => new Todo(item.id, item.name, item.done));
-      });
+      this.fetchTodos();
       this.clear();
+      // console.log();
+
+
+      
     }
 
     addTodo() {
@@ -38,9 +38,11 @@
       this.api
         .addTodo(this.todo)
         .then((payload) => {
-          if (payload.data) {
+          if (payload && payload.data) {
             this.todos.push(payload.data[0]);
+
           }
+          this.fetchTodos(); // Fetch todos after adding a new one
         })
         .catch((err) => console.log(`Error in add TODO ${err}`));
       this.clear();
@@ -81,5 +83,15 @@
     clear() {
       this.todo = new Todo();
       this.actionLabel = 'ADD';
+    }
+
+    fetchTodos() {
+      this.api.getTodos().then((data) => {
+        this.todos = (data.todos ?? []).map(
+          (item: any) => new Todo(item.id, item.name, item.done, item.user_id)
+        );
+        console.log('this.todos', this.todos);
+        // this.user_id = data.user_id ?? ''; // Guardar el user_id
+      });
     }
   }

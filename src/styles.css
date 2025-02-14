@@ -4,9 +4,79 @@ body{
   box-sizing: border-box;
 }
 
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh; */
+
+
+
+
+.container {
+  max-width: 800px; /* Ancho máximo del contenedor */
+  margin: auto; /* Centrar el contenedor */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
+
+h1 {
+  color: #007bff; /* Color del título */
+  text-align: center; /* Centrar el título */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.add-todo-wrapper {
+  display: flex; /* Usar flexbox para alinear elementos */
+  justify-content: space-between; /* Espacio entre elementos */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.add-todo-input {
+  flex: 1; /* Hacer que el input ocupe el espacio disponible */
+  margin-right: 10px; /* Espaciado a la derecha */
+}
+
+.todo-item {
+  background-color: #ffffff; /* Fondo blanco para cada nota */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  margin-bottom: 15px; /* Espaciado inferior entre notas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  display: flex; /* Usar flexbox para alinear elementos */
+  justify-content: space-between; /* Espacio entre elementos */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.todo-item h1 {
+  flex: 1; /* Hacer que el título ocupe el espacio disponible */
+  margin: 0; /* Eliminar márgenes */
+}
+
+.checked {
+  text-decoration: line-through; /* Tachar texto de tareas completadas */
+  color: #6c757d; /* Color gris para tareas completadas */
+}
+
+.unchecked {
+  color: #007bff; /* Color azul para tareas no completadas */
+}
+
+.todo-actions {
+  display: flex; /* Usar flexbox para alinear acciones */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.todo-actions .btn {
+  cursor: pointer; /* Cambiar cursor a puntero */
+  transition: color 0.3s; /* Transición suave para el color */
+}
+
+.todo-actions .btn:hover {
+  color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+@media (max-width: 768px) {
+  .todo-item {
+    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+  }
+}
+
+
+/*  */

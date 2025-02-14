@@ -5,7 +5,7 @@
   <div class="row m-1 p-4">
     <div class="col">
       <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
-        <i class="fa fa-check-circle bg-primary text-white rounded p-2"></i>
+        <!-- <i class="fa fa-check-circle bg-primary text-white rounded p-2"></i> -->
       </div>
     </div>
   </div>
@@ -36,12 +36,17 @@
       <div *ngFor="let todo of todos" class="row px-3 align-items-center todo-item rounded">
         <div class="col-auto m-1 p-0 d-flex align-items-center">
           <h2 class="m-0 p-0">
-            <i (click)="checkTodo(todo)" class="text-primary btn fa "
-              [ngClass]="{'fa-check-square': todo.done,'fa-square-o': !todo.done}"></i>
+            <i (click)="checkTodo(todo)" class="text-primary btn fa"
+              [ngClass]="{'fa-check-square': todo.done, 'fa-square': !todo.done}"></i>
           </h2>
         </div>
         <div class="col px-1 m-1 d-flex align-items-center">
-          <h1 [ngClass]="{'text-lt': todo.done}">{{todo.name}}</h1>
+          <h2 [ngClass]="{'text-lt': todo.done}">{{todo.name}}</h2>
+          <!-- <span> {{todo.user}}</span> -->
+          <div class="col px-1 m-1 d-flex align-items-center">
+
+            <h2 class="text-muted ms-2"> - {{ todo.user_id }}</h2>
+          </div>
 
         </div>
         <div class="col-auto m-1 p-0 px-3 d-none">
@@ -53,7 +58,7 @@
                 data-placement="bottom" title="Edit todo"></i>
             </h5>
             <h5 class="m-0 p-0 px-2">
-              <i class="fa fa-trash-o text-danger btn m-0 p-0" data-toggle="tooltip" data-placement="bottom"
+              <i class="fa fa-remove text-danger btn m-0 p-0" data-toggle="tooltip" data-placement="bottom"
                 (click)="delete(todo)" title="Delete todo"></i>
             </h5>
           </div>
