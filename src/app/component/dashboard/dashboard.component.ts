@@ -88,10 +88,9 @@ import { Component } from '@angular/core';
     fetchTodos() {
       this.api.getTodos().then((data) => {
         this.todos = (data.todos ?? []).map(
-          (item: any) => new Todo(item.id, item.name, item.done, item.user_id)
-        );
+          (item: any) => new Todo(item.id, item.name, item.done, item.user_id, item.user_profiles?.email)
+        );        
         console.log('this.todos', this.todos);
-        // this.user_id = data.user_id ?? ''; // Guardar el user_id
       });
     }
   }

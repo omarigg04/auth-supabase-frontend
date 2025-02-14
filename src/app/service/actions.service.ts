@@ -38,23 +38,21 @@ export class ActionsService {
   }
 
   async getTodos() {
-    // Obtener el usuario autenticado
-    const { data: userData, error: userError } = await this.supabase_client.auth.getUser();
-
-    if (userError || !userData?.user) {
-      console.error('Error obteniendo usuario:', userError);
-      return { todos: null, error: userError };
-    }
-
-    // Obtener los todos del usuario autenticado
+    // Obtener los todos y unir con la tabla user_profiles para traer el email
     let { data: todos, error } = await this.supabase_client
       .from('todos')
-      .select('*')
-      // .eq('user_id', userData.user.id) // Filtrar por user_id
+      .select(`
+        id, created_at, name, done, user_id,
+        user_profiles (email)
+      `)
       .limit(10);
-
-    // Incluir user_id en la respuesta
-    return { todos, user_id: userData.user.id, error };
+  
+    if (error) {
+      console.error('Error obteniendo todos:', error);
+      return { todos: null, error };
+    }
+  
+    return { todos, error };
   }
 
   async deleteTodo(id: string) {
