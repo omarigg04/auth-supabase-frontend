@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
   import { Todo } from '../../todo.model';
   import { ActionsService } from 'src/app/service/actions.service';
   import { FormsModule } from '@angular/forms';
+import { SupabaseClient } from '@supabase/supabase-js';
 
   @Component({
     selector: 'app-dashboard',
@@ -25,6 +26,16 @@ import { Component } from '@angular/core';
       this.clear();
       // console.log();
 
+      
+      this.api.getUser().then(user => {
+        if (user) {
+          console.log('User info:', user);
+        } else {
+          console.log('No user authenticated');
+        }
+      }).catch(err => {
+        console.error('Error fetching user info:', err);
+      });
 
       
     }

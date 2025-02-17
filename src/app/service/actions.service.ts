@@ -15,7 +15,15 @@ export class ActionsService {
       environment.supabase.key
     );
   }
-
+  async getUser() {
+    const { data: userData, error } = await this.supabase_client.auth.getUser();
+    if (error) {
+      console.error('Error obteniendo usuario:', error);
+      return null;
+    }
+    return userData?.user;
+  }
+  
   async addTodo(todo: Todo) {
     // Obtener el usuario autenticado
     const { data: userData, error: userError } = await this.supabase_client.auth.getUser();
@@ -45,6 +53,7 @@ export class ActionsService {
         id, created_at, name, done, user_id,
         user_profiles (email)
       `)
+      .order('id', { ascending: true })
       .limit(10);
   
     if (error) {
@@ -64,6 +73,7 @@ export class ActionsService {
   }
 
   async update(todo: Todo) {
+    const {email, ...todoData } = todo;
     const { data, error } = await this.supabase_client
       .from('todos')
       .update(todo)
