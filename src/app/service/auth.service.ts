@@ -26,6 +26,15 @@ export class AuthService {
     );
   }
 
+  async getUser() {
+    const { data: userData, error } = await this.supabase_client.auth.getUser();
+    if (error) {
+      console.error('Error obteniendo usuario:', error);
+      return null;
+    }
+    return userData?.user;
+  }
+  
   //Register
   async signUp(email: string, password: string): Promise<any> {
     const { data, error } = await this.supabase_client.auth.signUp({
