@@ -80,3 +80,15 @@ h1 {
 
 
 /*  */
+
+.instructions{
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en una columna */
+  align-items: flex-start; /* Alinea los items a la izquierda */
+  list-style-position: inside; /* Si quieres que los bullets también estén alineados a la izquierda */
+  padding-left: 0; /* Elimina el padding por defecto del navegador */
+}
+
+::ng-deep p {
+  margin-bottom: 0;
+}
