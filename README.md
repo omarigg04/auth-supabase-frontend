@@ -3,7 +3,7 @@
 
 
 Register & Login
-![image](https://github.com/user-attachments/assets/973fa5f0-d8a4-430b-82cf-8085af74ae7b)
+
 ![image](https://github.com/user-attachments/assets/ebe4d642-9342-463c-a490-7b5c156a81d6)
 
 Dashboard
