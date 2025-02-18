@@ -1,4 +1,15 @@
-# Auth
+## Angular Post App 
+# Supabase Authentication
+
+
+Register & Login
+![image](https://github.com/user-attachments/assets/973fa5f0-d8a4-430b-82cf-8085af74ae7b)
+![image](https://github.com/user-attachments/assets/ebe4d642-9342-463c-a490-7b5c156a81d6)
+
+Dashboard
+![image](https://github.com/user-attachments/assets/cce6b672-64fe-4de2-bb31-7773f9958f00)
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
 
